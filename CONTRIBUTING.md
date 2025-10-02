@@ -7,6 +7,16 @@ Thank you for contributing to this manuscript! This document outlines our workfl
 - **Maintainer**: @bonschorno
 - **Contributors**: @seawaR, @larnsce
 
+## Setup
+
+This project uses `renv` for R package management. After cloning the repository:
+
+```r
+renv::restore()
+```
+
+This will install all required packages as specified in the lockfile.
+
 ## Workflow
 
 ### 1. Track TODOs as Issues
@@ -67,6 +77,7 @@ When working on an issue:
 - Update issue comments with progress or blockers
 - Render the manuscript locally before opening a PR to check for errors
 - Use Quarto's visual editor or preview features to verify formatting
+- If you add new R packages, run `renv::snapshot()` to update the lockfile and commit the changes
 
 ## Questions?
 
