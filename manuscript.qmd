@@ -1,0 +1,18 @@
+---
+title: "Manuscript"
+format: html
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(ghedata)
+```
+
+```{r}
+people |> 
+  count(degree, type)
+```
+
