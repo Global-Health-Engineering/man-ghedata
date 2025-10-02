@@ -70,6 +70,38 @@ When working on an issue:
 - `main` represents the current "official" version of the manuscript
 - Major milestones (e.g., submission versions) are tagged on `main`
 
+## Using Claude Code
+
+We encourage the use of [Claude Code](https://claude.com/claude-code) for manuscript development. When using Claude Code:
+
+### AI-Generated Content
+
+When Claude Code creates or substantially modifies content (text, code, figures):
+- **Commit using Claude Code's commit function** to clearly attribute AI assistance
+- These commits automatically include attribution with Claude Code reference
+
+### Human Edits
+
+When you manually revise AI-generated content or write original content:
+- **Use standard git commits** to attribute your own work
+- This maintains a transparent history of human vs. AI contributions
+
+Example workflow:
+```bash
+# Claude Code drafts the Methods section
+# → Committed via Claude Code (includes attribution footer)
+
+# You revise the methodology description
+git add pitch.qmd
+git commit -m "Revise sampling methodology description"
+# → Standard commit attributed to you
+```
+
+This approach:
+- Shows where AI assistance was used
+- Credits human intellectual contributions
+- Maintains manuscript integrity and transparency
+
 ## Best Practices
 
 - Keep PRs focused on specific issues
@@ -78,6 +110,7 @@ When working on an issue:
 - Render the manuscript locally before opening a PR to check for errors
 - Use Quarto's visual editor or preview features to verify formatting
 - If you add new R packages, run `renv::snapshot()` to update the lockfile and commit the changes
+- Consider using Claude Code for initial drafts, code generation, and formatting tasks
 
 ## Questions?
 
