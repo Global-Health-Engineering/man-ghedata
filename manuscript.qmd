@@ -11,8 +11,39 @@ library(tidyverse)
 library(ghedata)
 ```
 
+## Who has worked with the group?
+
+The `people` dataset records every staff member and student project associated with the group. As a first look at the kind of "hidden" mentoring data the pitch describes, we summarise group composition by degree level and engagement type, then plot how new arrivals have grown year by year.
+
 ```{r}
-people |> 
-  count(degree, type)
+#| label: tbl-composition
+#| tbl-cap: "Group composition by degree level and engagement type."
+
+people |>
+  count(degree, type, name = "n") |>
+  pivot_wider(names_from = type, values_from = n, values_fill = 0)
+```
+
+```{r}
+#| label: fig-arrivals
+#| fig-cap: "New arrivals per year, by degree level."
+#| warning: false
+
+degree_levels <- c("bsc", "msc", "phd", "staff")
+
+people |>
+  filter(!is.na(year)) |>
+  mutate(degree = factor(degree, levels = degree_levels)) |>
+  count(year, degree) |>
+  ggplot(aes(x = year, y = n, fill = degree)) +
+  geom_col() +
+  scale_x_continuous(breaks = scales::breaks_width(1)) +
+  scale_fill_brewer(palette = "Set2", na.value = "grey80") +
+  labs(
+    x = "Start year",
+    y = "New people",
+    fill = "Degree"
+  ) +
+  theme_minimal(base_size = 12)
 ```
 
