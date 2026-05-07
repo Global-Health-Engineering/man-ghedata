@@ -2,7 +2,7 @@
 title: "pitch"
 format: html
 ---
-
+ 
 # Unlocking Hidden Treasures: A Practical Guide to Research Group Metadata
 
 ## Why Should We Care About Metadata?
